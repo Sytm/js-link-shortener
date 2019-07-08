@@ -28,6 +28,10 @@ or
 ```
 git clone git@github.com:Sytm/js-link-shortener.git
 ```
+and then move into the directory of the repository
+```
+cd js-link-shortener
+```
 Now install all the needed Node.js dependencies like this (You still need to be in the same directory we just created):
 ```
 npm install
