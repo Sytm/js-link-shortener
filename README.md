@@ -19,10 +19,7 @@ To install and run this project you need the following installed:
 Firstly you need to download this repository, either download it as a zip archive and extract it where you want the program to run or use git and clone it into the directory.
 
 Example using git:
-```
-mkdir linkshortener
-cd linkshortener
-```
+
 Depending on your preference you can now clone this repository either via https or ssh *(for ssh you need a ssh keypair set up on github)*
 ```
 git clone https://github.com/Sytm/js-link-shortener.git
