@@ -23,9 +23,8 @@ function serveSiteNotFound(res: express.Response) {
 }
 
 app.post('/create', (req, res) => {
-    let parsedUrl = url.parse(req.url, true);
-    if (parsedUrl.query.url) {
-        let urlToCreate = parsedUrl.query.url;
+    let urlToCreate = req.body.url;
+    if (urlToCreate) {
         let validUrlResult = validUrl.isWebUri(urlToCreate);
         if (typeof urlToCreate === 'string' && !validUrlResult) {
             res.status(200).json(new JsonResponse(State.INVALID, 'The provided url is not a valid url!', ''));

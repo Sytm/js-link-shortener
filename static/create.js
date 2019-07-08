@@ -36,12 +36,17 @@ createButton.on( 'click', ( event ) => {
             'url': '/create',
             'dataType': 'json',
             'async': true,
-            'type': 'GET',
+            'type': 'POST',
             'data': {
                 'url': targetUrl
             },
             'error': function(jqXHR, textStatus, errorThrown) {
-                showModal('An ');
+                showModal('An error has occured',
+                `<p>
+                Text-Status: ${textStatus}<br>
+                <br>` +
+                (errorThrown ? ('Error thrown: ' + errorThrown) : '') + 
+                '</p>');
             },
             'success': function ( data, textStatus ) {
                 if ( data.state === 'error' ) {
