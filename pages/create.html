@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/create.css">
+
+    <title>Create new link</title>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <h2>Create new link</h2>
+            <p class="lead">Enter the target url below and press "Create link" to create a new shortenend link</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <div class="mb-3">
+                    <label for="url">Target URL</label>
+                    <input type="text" class="form-control" id="url" placeholder="https://example.com">
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" id="btn_create">Create link</button>
+            </div>
+            <div class="col-md-4 order-md-2 mb-4 pt-3 pt-xs-0">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Links you created</span>
+                    <span class="badge badge-secondary badge-pill" id="created_links_counter">0</span>
+                </h4>
+                <ul class="list-group mb-3" id="created_links_display">
+                </ul>
+                <button type="button" class="btn btn-danger float-left float-md-right" data-toggle="modal"
+                    data-target="#confirm-clear-history-modal">Clear history</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="popup-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="popup-modal-heading">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="popup-modal-body">
+                    Modal body
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirm-clear-history-modal">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="popup-modal-heading">Clear link history</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="popup-modal-body">
+                    Do you really want to delete your link history?
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="btn_clear_history" data-dismiss="modal">Yes, clear
+                        history</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="load-bar" id="load-bar" style="display: none;">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- https://github.com/js-cookie/js-cookie -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/static/create.js"></script>
+</body>
+
+</html>

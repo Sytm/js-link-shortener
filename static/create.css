@@ -1,0 +1,56 @@
+.lh-condensed {
+    line-height: 1.25;
+}
+
+.load-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 12px;
+    background-color: #fdba2c;
+}
+
+.load-bar>.bar {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+}
+
+.load-bar>.bar:nth-child(1) {
+    background-color: #da4733;
+    animation: loading 3s cubic-bezier(0.1, 0.7, 1.0, 0.1) infinite;
+}
+
+.load-bar>.bar:nth-child(2) {
+    background-color: #3b78e7;
+    animation: loading 3s cubic-bezier(0.1, 0.7, 1.0, 0.1) 1s infinite;
+}
+
+.load-bar>.bar:nth-child(3) {
+    background-color: #fdba2c;
+    animation: loading 3s cubic-bezier(0.1, 0.7, 1.0, 0.1) 2s infinite;
+}
+
+@keyframes loading {
+    from {
+        left: 50%;
+        width: 0;
+        z-index: 100;
+    }
+    33.3333% {
+        left: 0;
+        width: 100%;
+    }
+    50% {
+        z-index: 50
+    }
+    to {
+        left: 0;
+        width: 100%;
+        z-index: 0
+    }
+}

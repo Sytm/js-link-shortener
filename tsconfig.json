@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "sourceMap": false,
+        "watch": true,
+        "outDir": "dist/",
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "target": "ES2019"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
