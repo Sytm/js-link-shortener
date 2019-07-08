@@ -73,6 +73,7 @@ As of now, the settings file looks like this:
 }
 ```
 Explaination of the 4 main properties
+
 | Property       | Default               | Description                                                                                |
 |----------------|-----------------------|--------------------------------------------------------------------------------------------|
 | port           | 8089                  | The port where the web-service will be accessible                                          |
@@ -81,6 +82,7 @@ Explaination of the 4 main properties
 | sites          | See table below       | Defines where the program should look for the html files to create new links and 404 pages |
 
 Explaination of the sites json object
+
 | Property       | Description                                                                                                                                                                                              |
 |----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | identifier     | The unique id for each site. Required are "create", "no_such_link" and "no_such_page"                                                                                                                    |
