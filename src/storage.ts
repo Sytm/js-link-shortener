@@ -13,24 +13,24 @@ export class LinkStorage {
         } else {
             this.serverSettings = new ServerSettings(
                 {
-                    'randomIdLength': 10,
-                    'port': 8089,
-                    'storagePath': './data/storage.json',
-                    'sites': [
+                    randomIdLength: 10,
+                    port: 8089,
+                    storagePath: './data/storage.json',
+                    sites: [
                         {
-                            'identifier': 'create',
-                            'filePath': './pages/create.html',
+                            identifier: 'create',
+                            filePath: './pages/create.html',
+                            checkForUpdates: false
+                        },
+                        {
+                            identifier: 'no_such_link',
+                            filePath: './pages/link_not_found.html',
                             'checkForUpdates': false
                         },
                         {
-                            'identifier': 'no_such_link',
-                            'filePath': './pages/link_not_found.html',
-                            'checkForUpdates': false
-                        },
-                        {
-                            'identifier': 'no_such_site',
-                            'filePath': './pages/site_not_found.html',
-                            'checkForUpdates': false
+                            identifier: 'no_such_site',
+                            filePath: './pages/site_not_found.html',
+                            checkForUpdates: false
                         }
                     ]
                 }
@@ -185,10 +185,10 @@ export class ServerSettings {
 
     toJSON(): IServerSettings {
         let jsonObj = {
-            'randomIdLength': this.randomIdLength,
-            'port': this.port,
-            'storagePath': this.storagePath,
-            'sites': []
+            randomIdLength: this.randomIdLength,
+            port: this.port,
+            storagePath: this.storagePath,
+            sites: []
         } as IServerSettings;
         this.sites.forEach(element => {
             jsonObj.sites.push(element.toJSON());
@@ -219,9 +219,9 @@ export class Site {
 
     toJSON(): ISite {
         return {
-            'identifier': this.identifier,
-            'filePath': this.filePath,
-            'checkForUpdates': this.checkForUpdates
+            identifier: this.identifier,
+            filePath: this.filePath,
+            checkForUpdates: this.checkForUpdates
         };
     }
 }
