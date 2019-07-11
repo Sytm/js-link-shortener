@@ -2,7 +2,6 @@
 import * as express from 'express';
 // Express middlewares
 import * as  helmet from 'helmet';
-import * as session from 'express-session';
 // Misc imports
 import * as validUrl from 'valid-url';
 import * as uuid4 from 'uuid4';
@@ -11,7 +10,6 @@ import { Settings } from './settings';
 import { JsonResponse, State } from './response';
 import { Main } from './main';
 import { Database } from './database';
-const KnexSessionStore = require('connect-session-knex')(session);
 
 export class WebApp {
 
@@ -57,27 +55,6 @@ export class WebApp {
             res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
             next();
         });
-
-        var sess = {
-            genid: (req) => {
-                return uuid4();
-            },
-            resave: false,
-            saveUninitialized: false,
-            secret: this.settings.cookieSecret,
-            store: new KnexSessionStore({
-                createtable: true,
-                knex: this.database.knexConnection
-            }),
-            unset: 'destroy'
-        } as session.SessionOptions;
-
-        if (this.settings.behindHttpsProxy) {
-            this.app.set('trust proxy', 1);
-            sess.cookie.secure = true;
-        }
-
-        this.app.use(session(sess));
 
         this.app.use((err, req, res, next) => {
             Main.getLogger().error('An error occurred while trying to serve a express page');

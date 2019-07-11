@@ -7,11 +7,11 @@ export class Helper {
 
     public static randomString(length: number): string {
         let chars = [];
-    
+
         for (let iteration = 0; iteration < length; iteration++) {
             chars.push(Helper.alphabet.charAt(Math.floor(Math.random() * Helper.alphabet.length)));
         }
-    
+
         return chars.join('');
     }
 
