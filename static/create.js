@@ -33,7 +33,7 @@ createButton.on( 'click', ( event ) => {
         urlField.val( '' );
         loadBar.show();
         $.ajax( {
-            'url': '/create',
+            'url': '/api/create',
             'dataType': 'json',
             'async': true,
             'type': 'POST',

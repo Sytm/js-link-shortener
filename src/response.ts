@@ -1,5 +1,4 @@
 export class JsonResponse {
-
     constructor(public state: State, public message: string, public id: string) {
     }
 }
