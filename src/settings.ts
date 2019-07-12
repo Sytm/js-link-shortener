@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { Main } from './main';
 import { Helper } from './helper';
+import * as mixinDeep from 'mixin-deep';
 
 var defaultSettings =
     {
@@ -45,7 +46,7 @@ export class Settings {
         if (fs.existsSync(settingsPath)) {
             iSettings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
             // Extend parsed settings with defaults to fill in missing properties
-            Object.assign(iSettings, defaultSettings);
+            iSettings = mixinDeep(defaultSettings, iSettings);
         } else {
             iSettings = defaultSettings;
             // Write defaults to file to make it available for modifications by the user
