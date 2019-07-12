@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "commonjs",
         "sourceMap": false,
-        "watch": true,
+        "watch": false,
         "outDir": "dist/",
         "noImplicitThis": true,
         "noFallthroughCasesInSwitch": true,

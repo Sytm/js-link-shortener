@@ -25,7 +25,6 @@
     "knex": "^0.18.3",
     "simple-node-logger": "^18.12.23",
     "sqlite3": "^4.0.9",
-    "uuid4": "^1.1.4",
     "valid-url": "^1.0.9"
   }
 }

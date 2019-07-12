@@ -78,9 +78,10 @@ class LinkStorage {
         let id = Helper.randomString(this.settings.randomIdLength);
         this.getLink(id, (linkData) => {
             if (linkData == null) {
-                let linkData = new LinkData(id, url, new Date());
-                this.database.knexConnection.insert(linkData).into('links');
-                callback(linkData);
+                let linkData = new LinkData(id, url, new Date().getTime());
+                this.database.knexConnection<ILinkData>('links').insert(linkData).then((result) => {
+                    callback(linkData);
+                });
             } else {
                 this.createLink0(url, callback);
             }
@@ -93,7 +94,7 @@ class LinkStorage {
                 return this.database.knexConnection.schema.createTable('links', (table) => {
                     table.string('id').notNullable().primary();
                     table.string('url', 1024).notNullable().primary();
-                    table.date('link_created_at').nullable();
+                    table.bigInteger('link_created_at').nullable();
                 });
             }
         });
@@ -103,10 +104,10 @@ class LinkStorage {
 interface ILinkData {
     id: string,
     url: string,
-    link_created_at: Date
+    link_created_at: number
 }
 
 class LinkData implements ILinkData {
-    constructor(public id: string, public url: string, public link_created_at: Date) {
+    constructor(public id: string, public url: string, public link_created_at: number) {
     }
 }

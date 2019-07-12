@@ -37,7 +37,8 @@
                 <ul class="list-group mb-3" id="created_links_display">
                 </ul>
                 <button type="button" class="btn btn-danger float-left float-md-right" data-toggle="modal"
-                    data-target="#confirm-clear-history-modal">Clear history</button>
+                    id="btn_clear_history" data-target="#confirm-clear-history-modal">Clear
+                    history</button>
             </div>
         </div>
     </div>
@@ -83,13 +84,50 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" id="btn_clear_history" data-dismiss="modal">Yes, clear
+                    <button type="button" class="btn btn-danger" id="btn_clear_history_modal" data-dismiss="modal">Yes,
+                        clear
                         history</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="accept-cookies-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="popup-modal-heading">Enable cookies</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" id="popup-modal-body">
+                        <p>Toggle this switch to allow this site to store cookies:</p>
+                        <br>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="cookie-switch">
+                            <label class="custom-control-label" for="cookie-switch">Activate cookies</label>
+                        </div>
+                        <br>
+                        <p>The following cookies are stored:</p>
+                        <ul>
+                            <li>If you accept, a cookie called 'acceptedCookies' with a value of true, so you don't have to see this again</li>
+                            <li>If you accept, a cookie called 'createdUrls' with a JSON object storing your history of urls you created</li>
+                        </ul>
+                        <p>If you did <b>not</b> accept, nothing will be stored!</p>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     <div class="load-bar" id="load-bar" style="display: none;">
         <div class="bar"></div>

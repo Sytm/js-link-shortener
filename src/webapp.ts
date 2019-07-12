@@ -3,13 +3,12 @@ import * as express from 'express';
 // Express middlewares
 import * as  helmet from 'helmet';
 // Misc imports
-import * as validUrl from 'valid-url';
-import * as uuid4 from 'uuid4';
 // File-imports
 import { Settings } from './settings';
 import { JsonResponse, State } from './response';
 import { Main } from './main';
 import { Database } from './database';
+import { Helper } from './helper';
 
 export class WebApp {
 
@@ -71,8 +70,8 @@ export class WebApp {
         this.app.post('/api/create', (req, res) => {
             let urlToCreate = req.body.url;
             if (urlToCreate) {
-                let validUrlResult = validUrl.isWebUri(urlToCreate);
-                if (typeof urlToCreate === 'string' && !validUrlResult) {
+                let validUrlResult = Helper.isValidUrl(urlToCreate);
+                if (!(typeof urlToCreate === 'string') || validUrlResult === undefined) {
                     res.status(200).json(new JsonResponse(State.INVALID, 'The provided url is not a valid url!', ''));
                     res.end();
                     return;
@@ -88,9 +87,9 @@ export class WebApp {
         });
 
         this.app.get('/l/*', (req, res) => {
-            let id = new URL(req.url).pathname.substring(3);
+            let id = req.url.substring(3);
             this.database.linkStorage.getLink(id, (linkData) => {
-                if (linkData == null) {
+                if (linkData === null) {
                     res.writeHead(404, 'No such link', { 'Content-Type': 'text/html' });
                     res.write(this.settings.getSite('no_such_link').content);
                     res.end();

@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as validUrl from 'valid-url';
 
 export class Helper {
 
@@ -37,5 +38,30 @@ export class Helper {
 
     public static createParentFolder(filePath: string, callback: (err: NodeJS.ErrnoException | null) => void): void {
         Helper.createFolder(path.dirname(filePath), callback);
+    }
+
+    public static isValidUrl(url: string): string | undefined {
+        let modUrl = url;
+        // Check if url is url at all
+        if (validUrl.isWebUri(modUrl) !== undefined) {
+            return url;
+        }
+
+        // If url start with '//', the valid-url doesnt accept it as valid, but the browser knows what to do
+        if (url.startsWith('//')) {
+            modUrl = 'http:' + url;
+            if (validUrl.isWebUri(modUrl) !== undefined) {
+                return url;
+            }
+        }
+
+        // If a protocol has been omitted completly, try prepending it and checking again
+        if (!url.startsWith('https://') && !url.startsWith('http://')) {
+            modUrl = 'http://' + url;
+            if (validUrl.isWebUri(modUrl) !== undefined) {
+                return '//' + url;
+            }
+        }
+        return undefined;
     }
 }
