@@ -7,8 +7,6 @@ var defaultSettings =
         port: 8089,
         databasePath: './data/database.sqlite3',
         logFolder: './data/logs',
-        behindHttpsProxy: false,
-        cookieSecret: 'the sacred texts!',
         sites: [
             {
                 identifier: 'create',
@@ -55,8 +53,6 @@ export class Settings {
         // Assing values from settings object
         this.port = iSettings.port;
         this.randomIdLength = iSettings.randomIdLength;
-        this.behindHttpsProxy = iSettings.behindHttpsProxy;
-        this.cookieSecret = iSettings.cookieSecret;
 
         this.databasePath = iSettings.databasePath;
         this.logFolder = iSettings.logFolder;
@@ -107,8 +103,6 @@ export interface ISettings {
     randomIdLength: number,
     databasePath: string,
     logFolder: string,
-    behindHttpsProxy: boolean,
-    cookieSecret: string,
     sites: ISite[]
 }
 
