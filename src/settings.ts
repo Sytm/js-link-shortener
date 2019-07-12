@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import { Main } from './main';
+import { Helper } from './helper';
 
 var defaultSettings =
     {
@@ -40,6 +41,7 @@ export class Settings {
 
     constructor(settingsPath: string) {
         let iSettings: ISettings;
+        Helper.createParentFolderSync(settingsPath);
         if (fs.existsSync(settingsPath)) {
             iSettings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
             // Extend parsed settings with defaults to fill in missing properties
