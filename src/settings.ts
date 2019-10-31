@@ -32,8 +32,6 @@ export class Settings {
 
     public port: number;
     public randomIdLength: number;
-    public behindHttpsProxy: boolean;
-    public cookieSecret: string;
 
     public databasePath: string;
     public logFolder: string;
